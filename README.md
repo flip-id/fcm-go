@@ -20,6 +20,7 @@ This will open the package documentation in local. We can access it in `http://l
 # Example
 
 This library can be used based on the example shown in the URL below:
+
 `http://localhost:6060/pkg/gitlab.com/flip-id/default/fcm-go/?m=all#New`
 
 Script:

@@ -1,2 +1,5 @@
 # Coverage Output
 *.cov
+
+# .vscode Settings
+.vscode
