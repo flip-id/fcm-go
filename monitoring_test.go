@@ -1,30 +1,4 @@
-# fcm-go
-
-[![pipeline status](https://gitlab.com/flip-id/default/fcm-go/badges/main/pipeline.svg)](https://gitlab.com/flip-id/default/fcm-go/-/commits/main)
-[![coverage report](https://gitlab.com/flip-id/default/fcm-go/badges/main/coverage.svg)](https://gitlab.com/flip-id/default/fcm-go/-/commits/main)
-[![Latest Release](https://gitlab.com/flip-id/default/fcm-go/-/badges/release.svg)](https://gitlab.com/flip-id/default/fcm-go/-/releases)
-
-Fcm-go is a wrapper library of the original [firebase-admin-go](github.com/firebase/firebase-admin-go) library.
-This library is a modified library that supports calling hook before and after each action.
-It also supports the option to inject context for the monitoring purposes.
-
-## Documentation
-
-To show the documentation of the package, we can check the code directly or by running this command:
-```bash
-make doc
-```
-
-This will open the package documentation in local. We can access it in `http://localhost:6060/pkg/gitlab.com/flip-id/default/fcm-go/?m=all`.
-
-# Example
-
-This library can be used based on the example shown in the URL below:
-`http://localhost:6060/pkg/gitlab.com/flip-id/default/fcm-go/?m=all#New`
-
-Script:
-```go
-package main
+package fcm
 
 import (
 	"context"
@@ -40,7 +14,7 @@ import (
 
 type contextKey string
 
-func main() {
+func ExampleNew() {
 	ctx := context.Background()
 	fnBefore := func(s *Session) {
 		dummyData := map[string][]string{
@@ -97,4 +71,3 @@ func main() {
 
 	log.Printf("The message ID: %s", msgID)
 }
-```
