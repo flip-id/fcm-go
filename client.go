@@ -10,13 +10,21 @@ import (
 
 // Client is an interface to interact with the FCM client.
 type Client interface {
+	// Send : inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.Send.
 	Send(ctx context.Context, message *messaging.Message) (string, error)
+	// SendAll : inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.SendAll.
 	SendAll(ctx context.Context, messages []*messaging.Message) (*messaging.BatchResponse, error)
+	// SendAllDryRun: inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.SendAllDryRun.
 	SendAllDryRun(ctx context.Context, messages []*messaging.Message) (*messaging.BatchResponse, error)
+	// SendDryRun : inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.SendDryRun.
 	SendDryRun(ctx context.Context, message *messaging.Message) (string, error)
+	// SendMulticast : inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.SendMulticast.
 	SendMulticast(ctx context.Context, message *messaging.MulticastMessage) (*messaging.BatchResponse, error)
+	// SendMulticastDryRun : inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.SendMulticastDryRun.
 	SendMulticastDryRun(ctx context.Context, message *messaging.MulticastMessage) (*messaging.BatchResponse, error)
+	// SubscribeToTopic : inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.SubscribeToTopic.
 	SubscribeToTopic(ctx context.Context, tokens []string, topic string) (*messaging.TopicManagementResponse, error)
+	// UnsubscribeFromTopic : inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.UnsubscribeFromTopic.
 	UnsubscribeFromTopic(ctx context.Context, tokens []string, topic string) (*messaging.TopicManagementResponse, error)
 }
 
@@ -30,6 +38,7 @@ func (c *client) Assign(o *Option) *client {
 	return c
 }
 
+// New returns a new client wrapping the Firebase messaging client.
 func New(ctx context.Context, opts ...FnOption) (c Client, err error) {
 	o := new(Option)
 	for _, opt := range opts {

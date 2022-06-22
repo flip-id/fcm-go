@@ -13,6 +13,7 @@ type Option struct {
 	HookAfter  FnHook
 }
 
+// Init initializes the Option struct to avoid nil panic.
 func (o *Option) Init() *Option {
 	if o.HookBefore == nil {
 		o.HookBefore = noopHook
