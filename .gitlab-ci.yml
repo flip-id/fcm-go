@@ -1,0 +1,36 @@
+# This file is a template, and might need editing before it works on your project.
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Go.gitlab-ci.yml
+
+image: golang:1.17-buster
+stages:
+  - test
+
+coverage:
+  stage: test
+  coverage: '/^\d+.\d+%$/'
+  retry: 2
+  script:
+    - make coverage
+  only:
+    - main
+  tags:
+    - gcp-staging
+
+coverage_line:
+  stage: test
+  retry: 2
+  script:
+    - go install
+    - make test-coverage
+    - go get github.com/boumenot/gocover-cobertura
+    - go run github.com/boumenot/gocover-cobertura < profile.cov > coverage.xml
+  tags:
+    - gcp-staging
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
