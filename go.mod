@@ -1,4 +1,4 @@
-module gitlab.com/flip-id/default/fcm-go
+module github.com/flip-id/fcm-go
 
 go 1.17
 
