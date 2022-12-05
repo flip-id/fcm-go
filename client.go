@@ -8,6 +8,8 @@ import (
 	"github.com/fairyhunter13/reflecthelper/v4"
 )
 
+//go:generate mockgen -package=fcm -source=client.go -destination=client_mock.go
+
 // Client is an interface to interact with the FCM client.
 type Client interface {
 	// Send : inherit doc from https://pkg.go.dev/firebase.google.com/go/messaging#Client.Send.

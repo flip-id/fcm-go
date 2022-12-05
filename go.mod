@@ -5,6 +5,7 @@ go 1.17
 require (
 	firebase.google.com/go/v4 v4.8.0
 	github.com/fairyhunter13/reflecthelper/v4 v4.6.1
+	github.com/golang/mock v1.6.0
 	github.com/jarcoal/httpmock v1.2.0
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/oauth2 v0.0.0-20220309155454-6242fa91716a
