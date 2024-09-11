@@ -30,9 +30,9 @@ func testSendMulticast(t *testing.T, dryRun bool) {
 
 	var br *messaging.BatchResponse
 	if dryRun {
-		br, err = client.SendMulticastDryRun(ctx, testMulticastMessage)
+		br, err = client.SendEachForMulticastDryRun(ctx, testMulticastMessage)
 	} else {
-		br, err = client.SendMulticast(ctx, testMulticastMessage)
+		br, err = client.SendEachForMulticast(ctx, testMulticastMessage)
 	}
 	fatalIfError(t, err)
 

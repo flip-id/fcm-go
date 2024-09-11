@@ -130,7 +130,7 @@ func (c *client) SendMulticast(ctx context.Context, message *messaging.Multicast
 		c.opt.HookAfter(s.SetBatchResponse(msg).SetError(err))
 	}()
 
-	msg, err = c.Client.SendMulticast(s.Ctx, s.MulticastMessage)
+	msg, err = c.Client.SendEachForMulticast(s.Ctx, s.MulticastMessage)
 	return
 }
 
@@ -144,7 +144,7 @@ func (c *client) SendMulticastDryRun(ctx context.Context, message *messaging.Mul
 		c.opt.HookAfter(s.SetBatchResponse(msg).SetError(err))
 	}()
 
-	msg, err = c.Client.SendMulticastDryRun(s.Ctx, s.MulticastMessage)
+	msg, err = c.Client.SendEachForMulticastDryRun(s.Ctx, s.MulticastMessage)
 	return
 }
 
